@@ -1,0 +1,39 @@
+server:
+  port: 0
+
+spring:
+  sql:
+    init:
+      mode: always
+
+  application:
+    name: black-bell-catalog-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:33060/black_bell?useUnicode=true&serverTimezone=Asia/Seoul
+    :username: root
+    password: 2982
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+    show-sql: true
+    defer-datasource-initialization: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance.id:${random.value}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.hibernate.type: trace
