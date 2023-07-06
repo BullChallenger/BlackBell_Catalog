@@ -3,6 +3,7 @@ package com.example.blackbell_catalog.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -22,6 +23,7 @@ public class CatalogEntity {
     @Column(nullable = false)
     private String productName;
 
+    @Setter
     @Column(nullable = false)
     private Integer stock;
 
